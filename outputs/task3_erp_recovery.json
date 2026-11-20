@@ -1,0 +1,266 @@
+{
+  "success": {
+    "status": "completed",
+    "source_order_id": "ORDER-RECOVERY-001",
+    "invoice": {
+      "invoice_id": "ERP-INV-ORDER-RECOVERY-001",
+      "source_order_id": "ORDER-RECOVERY-001",
+      "customer_code": "CUST-RECOVERY",
+      "customer_name": "Recovery Test",
+      "currency": "INR",
+      "total_amount": 45000.0,
+      "lines": [
+        {
+          "item_code": "LAPTOP-001",
+          "description": "Business Laptop",
+          "quantity": 1,
+          "unit_price": 45000.0,
+          "line_total": 45000.0
+        }
+      ]
+    },
+    "inventory": {
+      "reference_id": "INV-STOCK-0001",
+      "source_order_id": "ORDER-RECOVERY-001",
+      "items_updated": 1,
+      "quantities": {
+        "LAPTOP-001": 1
+      }
+    },
+    "message": "Order successfully synchronized with ERP.",
+    "attempts": 1,
+    "replayed": false,
+    "trace": [
+      {
+        "event": "attempt_started",
+        "attempt": 1,
+        "order_id": "ORDER-RECOVERY-001"
+      },
+      {
+        "event": "integration_completed",
+        "attempt": 1,
+        "invoice_id": "ERP-INV-ORDER-RECOVERY-001"
+      }
+    ]
+  },
+  "timeout_before_commit": {
+    "status": "completed",
+    "source_order_id": "ORDER-RECOVERY-002",
+    "invoice": {
+      "invoice_id": "ERP-INV-ORDER-RECOVERY-002",
+      "source_order_id": "ORDER-RECOVERY-002",
+      "customer_code": "CUST-RECOVERY",
+      "customer_name": "Recovery Test",
+      "currency": "INR",
+      "total_amount": 45000.0,
+      "lines": [
+        {
+          "item_code": "LAPTOP-001",
+          "description": "Business Laptop",
+          "quantity": 1,
+          "unit_price": 45000.0,
+          "line_total": 45000.0
+        }
+      ]
+    },
+    "inventory": {
+      "reference_id": "INV-STOCK-0001",
+      "source_order_id": "ORDER-RECOVERY-002",
+      "items_updated": 1,
+      "quantities": {
+        "LAPTOP-001": 1
+      }
+    },
+    "message": "Order successfully synchronized with ERP.",
+    "attempts": 2,
+    "replayed": false,
+    "trace": [
+      {
+        "event": "attempt_started",
+        "attempt": 1,
+        "order_id": "ORDER-RECOVERY-002"
+      },
+      {
+        "event": "timeout",
+        "attempt": 1,
+        "error": "ERP request timed out before commit",
+        "retryable": true
+      },
+      {
+        "event": "retry_scheduled",
+        "next_attempt": 2
+      },
+      {
+        "event": "attempt_started",
+        "attempt": 2,
+        "order_id": "ORDER-RECOVERY-002"
+      },
+      {
+        "event": "integration_completed",
+        "attempt": 2,
+        "invoice_id": "ERP-INV-ORDER-RECOVERY-002"
+      }
+    ]
+  },
+  "malformed_response": {
+    "status": "needs_review",
+    "error_type": "ERPMalformedResponseError",
+    "attempts": 1,
+    "next_action": "inspect_erp_response",
+    "trace": [
+      {
+        "event": "malformed_response",
+        "attempt": 1,
+        "retryable": false
+      }
+    ]
+  },
+  "permanent_failure": {
+    "status": "needs_review",
+    "error_type": "ERPPermanentError",
+    "attempts": 1,
+    "next_action": "operator_review",
+    "trace": [
+      {
+        "event": "permanent_failure",
+        "attempt": 1,
+        "retryable": false
+      }
+    ]
+  },
+  "timeout_after_commit": {
+    "status": "completed",
+    "source_order_id": "ORDER-RECOVERY-005",
+    "invoice": {
+      "invoice_id": "ERP-INV-ORDER-RECOVERY-005",
+      "source_order_id": "ORDER-RECOVERY-005",
+      "customer_code": "CUST-RECOVERY",
+      "customer_name": "Recovery Test",
+      "currency": "INR",
+      "total_amount": 45000.0,
+      "lines": [
+        {
+          "item_code": "LAPTOP-001",
+          "description": "Business Laptop",
+          "quantity": 1,
+          "unit_price": 45000.0,
+          "line_total": 45000.0
+        }
+      ]
+    },
+    "inventory": {
+      "reference_id": "INV-STOCK-0001",
+      "source_order_id": "ORDER-RECOVERY-005",
+      "items_updated": 1,
+      "quantities": {
+        "LAPTOP-001": 1
+      }
+    },
+    "message": "ERP commit confirmed after timeout.",
+    "reconciled": true,
+    "attempts": 1,
+    "trace": [
+      {
+        "event": "attempt_started",
+        "attempt": 1,
+        "order_id": "ORDER-RECOVERY-005"
+      },
+      {
+        "event": "timeout_after_commit",
+        "attempt": 1,
+        "reconciliation_required": true
+      },
+      {
+        "event": "commit_reconciled",
+        "invoice_id": "ERP-INV-ORDER-RECOVERY-005",
+        "inventory_reference": "INV-STOCK-0001"
+      }
+    ]
+  },
+  "replay_test": {
+    "first_run": {
+      "status": "completed",
+      "source_order_id": "ORDER-REPLAY-001",
+      "invoice": {
+        "invoice_id": "ERP-INV-ORDER-REPLAY-001",
+        "source_order_id": "ORDER-REPLAY-001",
+        "customer_code": "CUST-REPLAY",
+        "customer_name": "Replay Test",
+        "currency": "INR",
+        "total_amount": 45000.0,
+        "lines": [
+          {
+            "item_code": "LAPTOP-001",
+            "description": "Business Laptop",
+            "quantity": 1,
+            "unit_price": 45000.0,
+            "line_total": 45000.0
+          }
+        ]
+      },
+      "inventory": {
+        "reference_id": "INV-STOCK-0001",
+        "source_order_id": "ORDER-REPLAY-001",
+        "items_updated": 1,
+        "quantities": {
+          "LAPTOP-001": 1
+        }
+      },
+      "message": "Order successfully synchronized with ERP.",
+      "attempts": 1,
+      "replayed": false,
+      "trace": [
+        {
+          "event": "attempt_started",
+          "attempt": 1,
+          "order_id": "ORDER-REPLAY-001"
+        },
+        {
+          "event": "integration_completed",
+          "attempt": 1,
+          "invoice_id": "ERP-INV-ORDER-REPLAY-001"
+        }
+      ]
+    },
+    "second_run": {
+      "status": "completed",
+      "source_order_id": "ORDER-REPLAY-001",
+      "invoice": {
+        "invoice_id": "ERP-INV-ORDER-REPLAY-001",
+        "source_order_id": "ORDER-REPLAY-001",
+        "customer_code": "CUST-REPLAY",
+        "customer_name": "Replay Test",
+        "currency": "INR",
+        "total_amount": 45000.0,
+        "lines": [
+          {
+            "item_code": "LAPTOP-001",
+            "description": "Business Laptop",
+            "quantity": 1,
+            "unit_price": 45000.0,
+            "line_total": 45000.0
+          }
+        ]
+      },
+      "inventory": {
+        "reference_id": "INV-STOCK-0001",
+        "source_order_id": "ORDER-REPLAY-001",
+        "items_updated": 1,
+        "quantities": {
+          "LAPTOP-001": 1
+        }
+      },
+      "message": "Order successfully synchronized with ERP.",
+      "replayed": true,
+      "attempts": 0,
+      "trace": [
+        {
+          "event": "duplicate_prevented",
+          "order_id": "ORDER-REPLAY-001"
+        }
+      ]
+    },
+    "invoice_count": 1,
+    "inventory_update_count": 1
+  }
+}

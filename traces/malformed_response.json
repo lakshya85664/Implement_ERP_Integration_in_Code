@@ -1,0 +1,7 @@
+[
+  {
+    "event": "malformed_response",
+    "attempt": 1,
+    "retryable": false
+  }
+]

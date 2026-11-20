@@ -1,0 +1,64 @@
+[
+  {
+    "event": "integration.started",
+    "order_id": "ORDER-OBS-001",
+    "timestamp": "2026-11-20T07:35:38.784494+00:00",
+    "details": {}
+  },
+  {
+    "event": "invoice.creation.started",
+    "order_id": "ORDER-OBS-001",
+    "timestamp": "2026-11-20T07:35:38.784616+00:00",
+    "details": {}
+  },
+  {
+    "event": "invoice.created",
+    "order_id": "ORDER-OBS-001",
+    "timestamp": "2026-11-20T07:35:38.784656+00:00",
+    "details": {
+      "invoice_id": "ERP-INV-ORDER-OBS-001"
+    }
+  },
+  {
+    "event": "inventory.synchronization.started",
+    "order_id": "ORDER-OBS-001",
+    "timestamp": "2026-11-20T07:35:38.784659+00:00",
+    "details": {}
+  },
+  {
+    "event": "inventory.synchronized",
+    "order_id": "ORDER-OBS-001",
+    "timestamp": "2026-11-20T07:35:38.784670+00:00",
+    "details": {
+      "reference_id": "INV-STOCK-0001",
+      "items_updated": 1
+    }
+  },
+  {
+    "event": "integration.completed",
+    "order_id": "ORDER-OBS-001",
+    "timestamp": "2026-11-20T07:35:38.784673+00:00",
+    "details": {}
+  },
+  {
+    "event": "integration.started",
+    "order_id": "ORDER-OBS-002",
+    "timestamp": "2026-11-20T07:35:38.784680+00:00",
+    "details": {}
+  },
+  {
+    "event": "invoice.creation.started",
+    "order_id": "ORDER-OBS-002",
+    "timestamp": "2026-11-20T07:35:38.784703+00:00",
+    "details": {}
+  },
+  {
+    "event": "integration.failed",
+    "order_id": "ORDER-OBS-002",
+    "timestamp": "2026-11-20T07:35:38.784709+00:00",
+    "details": {
+      "error_type": "ERPTimeoutError",
+      "error": "ERP invoice request timed out"
+    }
+  }
+]

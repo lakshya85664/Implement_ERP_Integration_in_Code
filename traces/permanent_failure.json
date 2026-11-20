@@ -1,0 +1,7 @@
+[
+  {
+    "event": "permanent_failure",
+    "attempt": 1,
+    "retryable": false
+  }
+]

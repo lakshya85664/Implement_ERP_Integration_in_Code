@@ -1,0 +1,83 @@
+{
+  "result": {
+    "status": "completed",
+    "source_order_id": "ORDER-2001",
+    "invoice": {
+      "invoice_id": "ERP-INV-ORDER-2001",
+      "source_order_id": "ORDER-2001",
+      "customer_code": "CUST-101",
+      "customer_name": "Aarav Sharma",
+      "currency": "INR",
+      "total_amount": 92250.0,
+      "lines": [
+        {
+          "item_code": "LAPTOP-001",
+          "description": "Business Laptop",
+          "quantity": 2,
+          "unit_price": 45000.0,
+          "line_total": 90000.0
+        },
+        {
+          "item_code": "MOUSE-002",
+          "description": "Wireless Mouse",
+          "quantity": 3,
+          "unit_price": 750.0,
+          "line_total": 2250.0
+        }
+      ]
+    },
+    "inventory": {
+      "reference_id": "INV-STOCK-0001",
+      "source_order_id": "ORDER-2001",
+      "items_updated": 2,
+      "quantities": {
+        "LAPTOP-001": 2,
+        "MOUSE-002": 3
+      }
+    },
+    "message": "Order successfully synchronized with ERP."
+  },
+  "erp_state": {
+    "invoices": {
+      "ERP-INV-ORDER-2001": {
+        "invoice_id": "ERP-INV-ORDER-2001",
+        "source_order_id": "ORDER-2001",
+        "customer_code": "CUST-101",
+        "customer_name": "Aarav Sharma",
+        "currency": "INR",
+        "total_amount": 92250.0,
+        "lines": [
+          {
+            "item_code": "LAPTOP-001",
+            "description": "Business Laptop",
+            "quantity": 2,
+            "unit_price": 45000.0,
+            "line_total": 90000.0
+          },
+          {
+            "item_code": "MOUSE-002",
+            "description": "Wireless Mouse",
+            "quantity": 3,
+            "unit_price": 750.0,
+            "line_total": 2250.0
+          }
+        ]
+      }
+    },
+    "inventory": {
+      "LAPTOP-001": -2,
+      "MOUSE-002": -3
+    },
+    "inventory_updates": [
+      {
+        "reference_id": "INV-STOCK-0001",
+        "source_order_id": "ORDER-2001",
+        "items_updated": 2,
+        "quantities": {
+          "LAPTOP-001": 2,
+          "MOUSE-002": 3
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+============================================================
+TOPIC 16 — ERP INTEGRATION
+TASK 1 — WORKFLOW CONTRACT AND STATE MODEL
+============================================================
+{
+  "input": {
+    "source_system": "online_store",
+    "business_key": "ORDER-1001",
+    "payload": {
+      "order_id": "ORDER-1001",
+      "payment_status": "paid"
+    }
+  },
+  "run": {
+    "run_id": "ERP-RUN-001",
+    "business_key": "ORDER-1001",
+    "state": "running",
+    "attempts": 0,
+    "context": {
+      "order_id": "ORDER-1001",
+      "payment_status": "paid"
+    },
+    "tasks": [
+      {
+        "task_id": "TASK-001",
+        "name": "validate_paid_order",
+        "status": "pending",
+        "attempts": 0,
+        "result": {},
+        "error": null
+      },
+      {
+        "task_id": "TASK-002",
+        "name": "create_erp_invoice",
+        "status": "pending",
+        "attempts": 0,
+        "result": {},
+        "error": null
+      },
+      {
+        "task_id": "TASK-003",
+        "name": "synchronize_inventory",
+        "status": "pending",
+        "attempts": 0,
+        "result": {},
+        "error": null
+      }
+    ],
+    "events": [
+      {
+        "event_id": "ERP-RUN-001-EVENT-001",
+        "run_id": "ERP-RUN-001",
+        "event_type": "workflow.started",
+        "state": "created",
+        "timestamp": "2026-11-20T07:08:25.850383Z",
+        "details": {
+          "source_system": "online_store"
+        }
+      },
+      {
+        "event_id": "ERP-RUN-001-EVENT-002",
+        "run_id": "ERP-RUN-001",
+        "event_type": "workflow.started",
+        "state": "running",
+        "timestamp": "2026-11-20T07:08:25.850433Z",
+        "details": {
+          "transition": "start",
+          "new_state": "running"
+        }
+      }
+    ],
+    "result": null
+  },
+  "legal_transitions": [
+    {
+      "from": "created",
+      "event": "start",
+      "to": "running"
+    },
+    {
+      "from": "running",
+      "event": "complete",
+      "to": "completed"
+    },
+    {
+      "from": "running",
+      "event": "pause",
+      "to": "waiting"
+    },
+    {
+      "from": "waiting",
+      "event": "resume",
+      "to": "running"
+    },
+    {
+      "from": "running",
+      "event": "fail",
+      "to": "needs_review"
+    }
+  ]
+}
